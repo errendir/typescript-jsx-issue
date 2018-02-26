@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 
 import { EnhanceAComponent } from './enhancer'
 
@@ -11,7 +10,5 @@ class ConcreteComponent extends React.Component<ConcreteProps> {
 
 const EnhancedConcreteComponent = EnhanceAComponent<ConcreteProps, ConcreteComponent, typeof ConcreteComponent>(ConcreteComponent)
 
-ReactDOM.render(<div>
-  { React.createElement(EnhancedConcreteComponent, { a: 11, ref: (instance) => instance.doMagic() }) }
-  <EnhancedConcreteComponent a={11} ref={(instance) => instance.doMagic()} />
-</div>, document.querySelector("#whatever"))
+const el1 = React.createElement(EnhancedConcreteComponent, { a: 11, ref: (instance) => instance.doMagic() })
+const el2 = <EnhancedConcreteComponent a={11} ref={(instance) => instance.doMagic()} />
